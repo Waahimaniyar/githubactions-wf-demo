@@ -14,7 +14,7 @@ jobs:
      steps:
        - name: test phase
          run: echo "my application test"
-  deploy:
+   deploy:
     runs-on: ubutbu-22.04
     steps:
      - name: deploy phase
