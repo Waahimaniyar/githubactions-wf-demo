@@ -21,5 +21,11 @@ jobs:
     steps:
      - name: deploy phase
        run: echo "deploy phase"
+  image:
+    runs-on: ubuntu-22.04
+    needs: deploy
+    steps:
+     - name: image phase
+       run: echo "image phase"
    
   
