@@ -28,4 +28,10 @@ jobs:
      - name: image phase
        run: echo "image phase"
    
-  
+  container:
+    runs-on: ubuntu-22.04
+    needs: image
+    steps:
+     - name: container phase
+       run: echo "container phase"
+    
