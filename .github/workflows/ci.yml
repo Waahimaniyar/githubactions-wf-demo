@@ -11,11 +11,13 @@ jobs:
         run: echo "application build"
   test:
      runs-on: ubuntu-22.04
+     needs: build
      steps:
        - name: test phase
          run: echo "my application test"
   deploy:
     runs-on: ubuntu-22.04
+    needs: test
     steps:
      - name: deploy phase
        run: echo "deploy phase"
