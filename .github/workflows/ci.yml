@@ -1,0 +1,23 @@
+name: CI build&test
+on:
+   push:
+     branches:
+       - main
+jobs:
+  build:
+     runs-on: ubuntu-22.04
+     steps:
+      - name: test phase
+        run: echo "application build"
+  test:
+     runs-on: ubuntu-22.04
+     steps:
+       - name: test phase
+         run: echo "my application test"
+  deploy:
+    runs-on: ubutbu-22.04
+    steps:
+     - name: deploy phase
+       run: echo "deploy phase"
+   
+  
