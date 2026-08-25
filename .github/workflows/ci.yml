@@ -41,9 +41,10 @@ jobs:
     steps:
      - name: k8s phase
        run: echo "k8s phase"
+       
   github:
     runs-on: ubuntu-22.04
     needs: k8s
     steps:
      - name: github phase
-       run: echo "github phase"
+       run: echo "github phase, ${{ vars.my_name }}"
