@@ -47,4 +47,4 @@ jobs:
     needs: k8s
     steps:
      - name: github phase
-       run: echo "github phase, ${{ vars.my_name }}"
+       run: echo "github phase, ${{ secrets.docker_password }}"
