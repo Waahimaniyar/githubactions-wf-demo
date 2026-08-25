@@ -4,255 +4,690 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Modern Landing Page</title>
+  <title>Nova — Build Without Limits</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      line-height: 1.6;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Navbar */
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050816;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       BACKGROUND EFFECT
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #6d5dfc;
+      filter: blur(180px);
+      opacity: 0.18;
+      top: -200px;
+      left: -150px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      background: #00d4ff;
+      filter: blur(180px);
+      opacity: 0.12;
+      right: -150px;
+      bottom: -150px;
+      z-index: -1;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
     header {
-      width: 100%;
-      padding: 20px 8%;
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      padding: 14px 20px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 100;
+
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+
+      z-index: 1000;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: #38bdf8;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #7c6cff;
     }
 
     nav {
       display: flex;
-      gap: 30px;
+      gap: 28px;
+      align-items: center;
     }
 
     nav a {
-      color: #cbd5e1;
+      color: #a7b0c0;
       text-decoration: none;
+      font-size: 14px;
       transition: 0.3s;
     }
 
     nav a:hover {
-      color: #38bdf8;
+      color: white;
     }
 
-    .nav-btn {
-      padding: 10px 18px;
-      background: #38bdf8;
-      color: #0f172a;
-      border-radius: 8px;
+    .nav-button {
+      padding: 10px 17px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #7c6cff, #4f46e5);
+      color: white !important;
       font-weight: 600;
     }
 
-    .nav-btn:hover {
-      color: #0f172a;
-      background: #7dd3fc;
-    }
+    /* =========================
+       HERO
+    ========================= */
 
-    /* Hero */
     .hero {
-      min-height: 85vh;
+      min-height: 100vh;
+      padding: 160px 8% 100px;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       text-align: center;
-      padding: 80px 8%;
-      background:
-        radial-gradient(circle at top, #164e63 0%, #0f172a 45%);
+
+      position: relative;
     }
 
     .hero-content {
-      max-width: 850px;
+      max-width: 900px;
     }
 
     .badge {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 15px;
+
+      border: 1px solid rgba(124,108,255,0.35);
       border-radius: 50px;
-      color: #7dd3fc;
-      margin-bottom: 25px;
-      background: rgba(30, 41, 59, 0.6);
+
+      background: rgba(124,108,255,0.08);
+
+      color: #b8b0ff;
+
+      font-size: 13px;
+
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #7c6cff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #7c6cff;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 80px);
-      line-height: 1.05;
-      margin-bottom: 25px;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.98;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
     }
 
-    .hero h1 span {
-      color: #38bdf8;
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        #8b7cff,
+        #38bdf8,
+        #c084fc
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       max-width: 650px;
       margin: auto;
-      color: #94a3b8;
-      font-size: 19px;
+
+      color: #8993a7;
+      font-size: 18px;
+      line-height: 1.8;
     }
 
-    .buttons {
-      margin-top: 35px;
+    .hero-buttons {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-top: 38px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 25px;
-      border-radius: 10px;
       text-decoration: none;
+      padding: 14px 23px;
+      border-radius: 12px;
       font-weight: 600;
+      font-size: 14px;
       transition: 0.3s;
     }
 
     .primary {
-      background: #38bdf8;
-      color: #0f172a;
+      background: linear-gradient(135deg, #7c6cff, #4f46e5);
+      color: white;
+      box-shadow: 0 10px 40px rgba(99, 88, 255, 0.3);
     }
 
     .primary:hover {
-      transform: translateY(-3px);
-      background: #7dd3fc;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 50px rgba(99, 88, 255, 0.45);
     }
 
     .secondary {
-      border: 1px solid #334155;
-      color: #f8fafc;
+      border: 1px solid #252d3d;
+      color: #d4d9e2;
+      background: rgba(255,255,255,0.02);
     }
 
     .secondary:hover {
-      background: #1e293b;
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-4px);
     }
 
-    /* Features */
-    .features {
-      padding: 90px 8%;
+    /* =========================
+       HERO ORB
+    ========================= */
+
+    .orb {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 30% 30%,
+          #a78bfa,
+          #4f46e5,
+          #111827
+        );
+
+      filter: blur(1px);
+      opacity: 0.18;
+
+      animation: float 6s ease-in-out infinite;
+
+      top: 20%;
+      right: 5%;
+      z-index: -1;
     }
 
-    .section-title {
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+
+    /* =========================
+       TRUST
+    ========================= */
+
+    .trust {
       text-align: center;
-      margin-bottom: 50px;
+      padding: 35px 8%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .section-title h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
+    .trust p {
+      color: #5f6878;
+      font-size: 13px;
+      margin-bottom: 20px;
     }
 
-    .section-title p {
-      color: #94a3b8;
+    .logos {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+
+      color: #6f7888;
+      font-weight: 700;
+      font-size: 18px;
     }
 
-    .cards {
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 110px 8%;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: auto;
+      margin-bottom: 60px;
+    }
+
+    .section-heading span {
+      color: #8b7cff;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      color: #7f899b;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 20px;
     }
 
     .card {
-      padding: 30px;
-      border: 1px solid #1e293b;
-      border-radius: 18px;
-      background: #111c31;
-      transition: 0.3s;
+      padding: 32px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.045),
+          rgba(255,255,255,0.015)
+        );
+
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+
+      transition: 0.4s;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #7c6cff;
+      filter: blur(100px);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::before {
+      opacity: 0.15;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: #38bdf8;
+      border-color: rgba(124,108,255,0.4);
     }
 
     .icon {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      background: #082f49;
-      color: #38bdf8;
-      font-size: 24px;
-      margin-bottom: 20px;
+
+      border-radius: 14px;
+
+      background: rgba(124,108,255,0.12);
+
+      font-size: 23px;
+
+      margin-bottom: 25px;
     }
 
     .card h3 {
-      margin-bottom: 10px;
-      font-size: 21px;
+      margin-bottom: 12px;
+      font-size: 20px;
     }
 
     .card p {
-      color: #94a3b8;
+      color: #7e8799;
+      line-height: 1.7;
+      font-size: 14px;
     }
 
-    /* CTA */
-    .cta {
-      margin: 40px 8% 90px;
-      padding: 70px 30px;
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+
+    .stat {
       text-align: center;
-      border-radius: 25px;
-      background: linear-gradient(
-        135deg,
-        #075985,
-        #0c4a6e
-      );
+      padding: 35px 20px;
+
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat h3 {
+      font-size: 38px;
+      margin-bottom: 5px;
+
+      background: linear-gradient(90deg,#fff,#8b7cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat p {
+      color: #6e7788;
+      font-size: 13px;
+    }
+
+    /* =========================
+       SHOWCASE
+    ========================= */
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .showcase-text h2 {
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin: 15px 0;
+    }
+
+    .showcase-text p {
+      color: #818b9e;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .check {
+      display: flex;
+      gap: 10px;
+      margin: 14px 0;
+      color: #c4cad5;
+      font-size: 14px;
+    }
+
+    .check span {
+      color: #8b7cff;
+    }
+
+    .dashboard {
+      min-height: 350px;
+
+      padding: 20px;
+
+      border-radius: 20px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background:
+        linear-gradient(
+          145deg,
+          #111827,
+          #080c18
+        );
+
+      box-shadow: 0 30px 100px rgba(0,0,0,0.35);
+
+      transform: perspective(1000px) rotateY(-5deg);
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 25px;
+    }
+
+    .window-bar span {
+      width: 9px;
+      height: 9px;
+      background: #3c4556;
+      border-radius: 50%;
+    }
+
+    .graph {
+      height: 200px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(124,108,255,0.18),
+          transparent
+        );
+
+      border: 1px solid rgba(255,255,255,0.05);
+
+      position: relative;
+    }
+
+    .graph::after {
+      content: "↗";
+      position: absolute;
+      font-size: 90px;
+      color: #7c6cff;
+      right: 25%;
+      top: 25%;
+      opacity: 0.7;
+    }
+
+    /* =========================
+       TESTIMONIAL
+    ========================= */
+
+    .testimonial {
+      max-width: 800px;
+      margin: auto;
+
+      text-align: center;
+
+      padding: 45px;
+
+      border-radius: 22px;
+
+      background: rgba(255,255,255,0.025);
+
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .testimonial p {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #c4cad5;
+    }
+
+    .author {
+      margin-top: 25px;
+      color: #7c6cff;
+      font-weight: 600;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      text-align: center;
+
+      max-width: 1100px;
+      margin: 50px auto 100px;
+
+      padding: 90px 30px;
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(124,108,255,0.22),
+          transparent 60%
+        );
+
+      border: 1px solid rgba(124,108,255,0.15);
     }
 
     .cta h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
+      font-size: clamp(38px, 6vw, 65px);
+      letter-spacing: -3px;
+      margin-bottom: 20px;
     }
 
     .cta p {
-      color: #bae6fd;
-      margin-bottom: 30px;
+      color: #7f899b;
+      margin-bottom: 35px;
     }
 
-    /* Footer */
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
-      padding: 30px 8%;
-      border-top: 1px solid #1e293b;
-      text-align: center;
-      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 35px 8%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      color: #626c7d;
+      font-size: 13px;
     }
 
-    /* Responsive */
-    @media (max-width: 800px) {
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: #626c7d;
+      text-decoration: none;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width: 900px) {
+
       nav {
         display: none;
       }
 
-      .cards {
+      .features {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        min-height: 75vh;
+      .stats {
+        grid-template-columns: repeat(2,1fr);
       }
 
-      .cta h2 {
-        font-size: 30px;
+      .showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        transform: none;
+      }
+    }
+
+    @media(max-width: 600px) {
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .showcase-text h2 {
+        font-size: 38px;
+      }
+
+      .testimonial {
+        padding: 30px 20px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
       }
     }
   </style>
@@ -260,109 +695,380 @@
 
 <body>
 
-  <!-- Navbar -->
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
   <header>
-    <div class="logo">Nova</div>
+
+    <div class="logo">
+      No<span>va.</span>
+    </div>
 
     <nav>
       <a href="#home">Home</a>
       <a href="#features">Features</a>
+      <a href="#stats">Why Nova</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-btn">Get Started</a>
+      <a href="#contact" class="nav-button">Get Started</a>
     </nav>
+
   </header>
 
-  <!-- Hero -->
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
   <section class="hero" id="home">
+
+    <div class="orb"></div>
+
     <div class="hero-content">
 
       <div class="badge">
-        🚀 Build something amazing
+        <span class="dot"></span>
+        The future of digital innovation
       </div>
 
       <h1>
-        The modern way to
-        <span>build your ideas.</span>
+        Build ideas that
+        <span class="gradient-text">
+          matter.
+        </span>
       </h1>
 
       <p>
-        Create powerful digital experiences with a simple,
-        modern and scalable platform designed for the future.
+        Nova gives ambitious teams the tools they need
+        to build, launch and scale incredible digital
+        products faster than ever.
       </p>
 
-      <div class="buttons">
-        <a href="#" class="btn primary">
-          Get Started →
+      <div class="hero-buttons">
+
+        <a href="#contact" class="btn primary">
+          Start Building →
         </a>
 
         <a href="#features" class="btn secondary">
-          Explore Features
+          Explore Platform
         </a>
+
       </div>
 
     </div>
+
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features">
 
-    <div class="section-title">
-      <h2>Everything you need</h2>
-      <p>Simple tools. Powerful results.</p>
+  <!-- =========================
+       TRUST
+  ========================== -->
+
+  <div class="trust">
+
+    <p>TRUSTED BY INNOVATIVE TEAMS</p>
+
+    <div class="logos">
+      <span>vertex</span>
+      <span>ORBIT</span>
+      <span>quantum</span>
+      <span>nexus</span>
+      <span>APEX</span>
     </div>
 
-    <div class="cards">
+  </div>
+
+
+  <!-- =========================
+       FEATURES
+  ========================== -->
+
+  <section id="features">
+
+    <div class="section-heading">
+
+      <span>Powerful Features</span>
+
+      <h2>
+        Everything you need
+        to move faster.
+      </h2>
+
+      <p>
+        A modern toolkit designed to help you
+        transform ideas into scalable products.
+      </p>
+
+    </div>
+
+
+    <div class="features">
 
       <div class="card">
+
         <div class="icon">⚡</div>
-        <h3>Fast Performance</h3>
+
+        <h3>Lightning Fast</h3>
+
         <p>
-          Optimized for speed and performance so your
-          applications remain fast and responsive.
+          Optimized infrastructure delivers
+          exceptional speed and performance
+          for your applications.
         </p>
+
       </div>
 
-      <div class="card">
-        <div class="icon">🔒</div>
-        <h3>Secure by Design</h3>
-        <p>
-          Modern security practices keep your data and
-          applications protected.
-        </p>
-      </div>
 
       <div class="card">
+
+        <div class="icon">🧠</div>
+
+        <h3>AI Powered</h3>
+
+        <p>
+          Use intelligent automation to reduce
+          repetitive work and make smarter
+          decisions.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
         <div class="icon">☁️</div>
-        <h3>Cloud Ready</h3>
+
+        <h3>Cloud Native</h3>
+
         <p>
-          Easily deploy and scale your applications
-          using modern cloud infrastructure.
+          Deploy anywhere and scale effortlessly
+          with modern cloud infrastructure.
         </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🔐</div>
+
+        <h3>Enterprise Security</h3>
+
+        <p>
+          Security-first architecture keeps your
+          data and applications protected.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📊</div>
+
+        <h3>Analytics</h3>
+
+        <p>
+          Understand your users with powerful
+          real-time analytics and insights.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">🚀</div>
+
+        <h3>Easy Deployment</h3>
+
+        <p>
+          Go from development to production
+          with a simple deployment workflow.
+        </p>
+
       </div>
 
     </div>
 
   </section>
 
-  <!-- CTA -->
-  <section class="cta" id="contact">
 
-    <h2>Ready to get started?</h2>
+  <!-- =========================
+       STATS
+  ========================== -->
 
-    <p>
-      Turn your idea into something people can use.
-    </p>
+  <section id="stats">
 
-    <a href="#" class="btn primary">
-      Start Building →
-    </a>
+    <div class="section-heading">
+
+      <span>Nova by the numbers</span>
+
+      <h2>
+        Built for scale.
+      </h2>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <h3>10K+</h3>
+        <p>Developers</p>
+      </div>
+
+      <div class="stat">
+        <h3>99.9%</h3>
+        <p>Uptime</p>
+      </div>
+
+      <div class="stat">
+        <h3>50M+</h3>
+        <p>Requests Served</p>
+      </div>
+
+      <div class="stat">
+        <h3>120+</h3>
+        <p>Countries</p>
+      </div>
+
+    </div>
 
   </section>
 
-  <!-- Footer -->
+
+  <!-- =========================
+       SHOWCASE
+  ========================== -->
+
+  <section id="about">
+
+    <div class="showcase">
+
+      <div class="showcase-text">
+
+        <span style="color:#8b7cff;">
+          BUILT DIFFERENT
+        </span>
+
+        <h2>
+          From idea to
+          production.
+        </h2>
+
+        <p>
+          Stop spending weeks configuring infrastructure.
+          Nova gives your team a streamlined environment
+          to build and deploy modern applications.
+        </p>
+
+        <div class="check">
+          <span>✓</span>
+          Production-ready infrastructure
+        </div>
+
+        <div class="check">
+          <span>✓</span>
+          Automated deployments
+        </div>
+
+        <div class="check">
+          <span>✓</span>
+          Real-time monitoring
+        </div>
+
+        <div class="check">
+          <span>✓</span>
+          Built-in scalability
+        </div>
+
+      </div>
+
+
+      <div class="dashboard">
+
+        <div class="window-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="graph"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TESTIMONIAL
+  ========================== -->
+
+  <section>
+
+    <div class="testimonial">
+
+      <p>
+        "Nova completely changed the way our team
+        builds products. We moved from idea to
+        production in days instead of months."
+      </p>
+
+      <div class="author">
+        — Alex Morgan, CTO
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CTA
+  ========================== -->
+
+  <section id="contact">
+
+    <div class="cta">
+
+      <h2>
+        Your next big idea
+        starts here.
+      </h2>
+
+      <p>
+        Build faster. Ship smarter. Scale without limits.
+      </p>
+
+      <a href="#" class="btn primary">
+        Get Started for Free →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer>
-    © 2026 Nova. All rights reserved.
+
+    <div>
+      © 2026 Nova. All rights reserved.
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">GitHub</a>
+    </div>
+
   </footer>
 
 </body>
